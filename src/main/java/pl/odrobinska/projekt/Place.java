@@ -10,6 +10,14 @@ abstract class Place {
     protected String author;
     protected Date date;
 
+    public Place(Integer id, String element, String link, String description, String author) {
+        this.id = id;
+        this.element = element;
+        this.link = link;
+        this.description = description;
+        this.author = author;
+    }
+
     public Integer getId() {
         return id;
     }
