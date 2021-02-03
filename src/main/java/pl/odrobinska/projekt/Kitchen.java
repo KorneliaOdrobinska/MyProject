@@ -8,6 +8,14 @@ public class Kitchen extends Place{
         this.type = type;
 
     }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
 }
 
 enum Type{

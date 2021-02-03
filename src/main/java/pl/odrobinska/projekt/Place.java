@@ -41,4 +41,8 @@ abstract class Place {
     public Date getDate() {
         return date;
     }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 }

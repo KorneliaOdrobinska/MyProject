@@ -15,6 +15,12 @@ public class App {
         System.out.println("Hello");
         Logger logger = LoggerFactory.getLogger(App.class);
         logger.warn("Warn");
+        Service service = new Service(new Bedroom(1,"e","link","descr",null));
+        logger.info(service.prepareData().getAuthor());
+        Service service1 = new Service(new Kitchen(1,"e","link","descr",null, Type.BIG));
+        logger.info(((Kitchen) service1.prepareData()).getType().toString());
+        Service service2 = new Service(new Kitchen(1,"e","link","descr",null, null));
+        logger.info(((Kitchen) service2.prepareData()).getType().toString());
 
             var webapp = new WebAppContext();
             webapp.setResourceBase("src/main/webapp");
