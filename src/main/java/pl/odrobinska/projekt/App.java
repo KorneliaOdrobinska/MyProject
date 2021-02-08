@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class App {
+        //comment
         public static void main(String[] args) throws Exception {
         System.out.println("Hello");
         Logger logger = LoggerFactory.getLogger(App.class);
