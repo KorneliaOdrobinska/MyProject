@@ -16,6 +16,7 @@
         <java.version>11</java.version>
         <slf4j.version>1.7.28</slf4j.version>
         <jetty.version>9.4.14.v20181114</jetty.version>
+        <junit.version>4.12</junit.version>
     </properties>
 
     <dependencies>
@@ -52,6 +53,13 @@
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-annotations</artifactId>
             <version>${jetty.version}</version>
+        </dependency>
+        <!--- tests -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
