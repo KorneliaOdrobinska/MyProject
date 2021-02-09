@@ -1,0 +1,28 @@
+2021-02-09 15:06:51 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Błąd składniowy w wyrażeniu SQL "CREATE TABLE KITCHEN(
+                          ID INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+                          ELEMENT VARCHAR(100) NOT NULL,
+                          LINK VARCHAR(400) NOT NULL,
+                          DESCRIPTION VARCHAR(100),
+                          AUTHOR VARCHAR(100) NOT NULL
+                          TYPE[*] VARCHAR(10) NOT NULL
+
+) "; oczekiwano "AS, DEFAULT, GENERATED, ON, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"
+Syntax error in SQL statement "CREATE TABLE KITCHEN(
+                          ID INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+                          ELEMENT VARCHAR(100) NOT NULL,
+                          LINK VARCHAR(400) NOT NULL,
+                          DESCRIPTION VARCHAR(100),
+                          AUTHOR VARCHAR(100) NOT NULL
+                          TYPE[*] VARCHAR(10) NOT NULL
+
+) "; expected "AS, DEFAULT, GENERATED, ON, NOT, NULL, AUTO_INCREMENT, BIGSERIAL, SERIAL, IDENTITY, NULL_TO_DEFAULT, SEQUENCE, SELECTIVITY, COMMENT, CONSTRAINT, PRIMARY, UNIQUE, NOT, NULL, CHECK, REFERENCES, ,, )"; SQL statement:
+create table kitchen(
+                          id int unsigned primary key auto_increment,
+                          element varchar(100) not null,
+                          link varchar(400) not null,
+                          description varchar(100),
+                          author varchar(100) not null
+                          type varchar(10) not null
+
+) [42001-199]

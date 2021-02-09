@@ -6,6 +6,7 @@ public class Service<T extends Place> {
     // TODO: 2021-02-02 zmienic na repository
     private Hall hall;
     private T place;
+    private PlaceRepository placeRepository;
 
     public Service(T place) {
         this.place = place;

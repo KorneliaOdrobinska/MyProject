@@ -61,6 +61,12 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <!--- db -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.199</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -91,6 +97,15 @@
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jetty.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>5.2.4</version>
+                <configuration>
+                    <url>jdbc:h2:file:.\db</url>
+                    <user>sa</user>
+                </configuration>
             </plugin>
         </plugins>
     </build>
