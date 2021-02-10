@@ -24,9 +24,6 @@ public class App {
         Service service2 = new Service(new Kitchen(1,"e","link","descr",null, null));
         logger.info(((Kitchen) service2.prepareData()).getType().toString());
          */
-            BedroomRepository bedroomRepository = new BedroomRepository();
-            Bedroom bedroom = new Bedroom(1,"e","link","descr",null);
-            logger.info("Bedroom repository 2:" + bedroomRepository.findById(2).orElse(bedroom).getDescription());
 
             var webapp = new WebAppContext();
             webapp.setResourceBase("src/main/webapp");
@@ -45,7 +42,20 @@ public class App {
             webapp.setAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern", ".*/classes/.*");
             var server = new Server(8080);
             server.setHandler(webapp);
+/* test
+            BedroomRepository bedroomRepository = new BedroomRepository();
+            Bedroom bedroom = new Bedroom(1,"e","link","descr",null);
+            logger.info("Bedroom repository 2:" + bedroomRepository.findAll().stream().findFirst().orElse(bedroom).getDescription());
 
+            logger.info("SQL: " + bedroomRepository.findById(2).orElse(bedroom).getDescription());
+
+ */
+            server.addLifeCycleListener(new AbstractLifeCycle.AbstractLifeCycleListener() {
+                @Override
+                public void lifeCycleStopped(LifeCycle event) {
+                    HibernateUtil.close();
+                }
+            });
             server.start();
             server.join();
     }

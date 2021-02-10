@@ -5,15 +5,16 @@ import java.util.List;
 import java.util.Optional;
 
 public class BedroomRepository {
-    private List<Bedroom> bedroomElements;
-
-    public BedroomRepository() {
-        bedroomElements = new ArrayList<>();
-        bedroomElements.add(new Bedroom(1,"Wallpaper", "https://images.app.goo.gl/rWpgb9RpfndsmfHj8","Blue triangles","Kornelia"));
-        bedroomElements.add(new Bedroom(2,"Lamps", "https://images.app.goo.gl/QhthngoqDfmiSW7v9","Hanging lamps","Kornelia"));
+    List<Bedroom> findAll() {
+        var session = HibernateUtil.getSessionFactory().openSession();
+        var transaction = session.beginTransaction();
+        var result = session.createQuery("from Bedroom", Bedroom.class).list();
+        transaction.commit();
+        session.close();
+        return result;
     }
 
-    Optional<Bedroom> findById(Integer id){
+  /*  Optional<Bedroom> findById(Integer id){
         // TODO zastosowac wyrazenia lambda
             Bedroom tempItem = null;
             for(Bedroom item: bedroomElements){
@@ -23,4 +24,14 @@ public class BedroomRepository {
             }
             return Optional.ofNullable(tempItem);
         }
+
+   */
+     Optional<Bedroom> findById(Integer id){
+          var session = HibernateUtil.getSessionFactory().openSession();
+          var transaction = session.beginTransaction();
+          var result = session.get(Bedroom.class, id);
+          transaction.commit();
+          session.close();
+          return Optional.ofNullable(result);
     }
+}
