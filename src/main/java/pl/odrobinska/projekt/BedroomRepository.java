@@ -34,4 +34,13 @@ public class BedroomRepository {
           session.close();
           return Optional.ofNullable(result);
     }
+
+    Bedroom addBedroomElement(Bedroom newBedroomElement){
+        var session = HibernateUtil.getSessionFactory().openSession();
+        var transaction = session.beginTransaction();
+        session.persist(newBedroomElement);
+        transaction.commit();
+        session.close();
+        return newBedroomElement;
+    }
 }

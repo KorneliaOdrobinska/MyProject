@@ -7,8 +7,8 @@ public class Hall extends Place{
         return stairs;
     }
 
-    public Hall(Integer id, String element, String link, String description, String author, Boolean stairs) {
-        super(id, element, link, description, author);
+    public Hall(String element, String link, String description, String author, Boolean stairs) {
+        super(element, link, description, author);
         this.stairs = stairs;
     }
 }

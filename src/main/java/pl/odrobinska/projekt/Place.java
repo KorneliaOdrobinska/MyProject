@@ -2,6 +2,7 @@ package pl.odrobinska.projekt;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
@@ -22,13 +23,15 @@ abstract class Place {
     public Place() {
     }
 
-    public Place(Integer id, String element, String link, String description, String author) {
-        this.id = id;
+    public Place( String element, String link, String description, String author) {
+      //  this.id = id;
         this.element = element;
         this.link = link;
         this.description = description;
         this.author = author;
     }
+
+
 
     public Integer getId() {
         return id;

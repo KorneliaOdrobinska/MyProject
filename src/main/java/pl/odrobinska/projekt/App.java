@@ -42,14 +42,12 @@ public class App {
             webapp.setAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern", ".*/classes/.*");
             var server = new Server(8080);
             server.setHandler(webapp);
-/* test
+
             BedroomRepository bedroomRepository = new BedroomRepository();
-            Bedroom bedroom = new Bedroom(1,"e","link","descr",null);
-            logger.info("Bedroom repository 2:" + bedroomRepository.findAll().stream().findFirst().orElse(bedroom).getDescription());
+            Bedroom bedroom = new Bedroom("e","link2","descr",null);
+            Service service = new Service(bedroom);
+            logger.info("Bedroom repository 2:" + bedroomRepository.addBedroomElement((Bedroom) service.prepareData()));
 
-            logger.info("SQL: " + bedroomRepository.findById(2).orElse(bedroom).getDescription());
-
- */
             server.addLifeCycleListener(new AbstractLifeCycle.AbstractLifeCycleListener() {
                 @Override
                 public void lifeCycleStopped(LifeCycle event) {

@@ -11,7 +11,7 @@ public class AppTest {
     @Test
     public void test_prepareData_bedroomObject(){
         // given
-        Bedroom bedroom = new Bedroom(1,"Bed", "http://","Blue","Kornelia");
+        Bedroom bedroom = new Bedroom("Bed", "http://","Blue","Kornelia");
         var SUT = new Service(bedroom); // SUT - System Under Test
 
         // when
@@ -26,13 +26,13 @@ public class AppTest {
     @Test
     public void test_prepareData_bedroomData(){
         // given
-        Bedroom bedroom = new Bedroom(1,"Bed", "http://","Blue","Kornelia");
+        Bedroom bedroom = new Bedroom("Bed", "http://","Blue","Kornelia");
         var SUT = new Service(bedroom); // SUT - System Under Test
 
         // when
         var result = SUT.prepareData();
         //then
-        assertEquals(bedroom.getId(),result.getId());
+      //  assertEquals(bedroom.getId(),result.getId());
         assertEquals(bedroom.getElement(),result.getElement());
         assertEquals(bedroom.getLink(),result.getLink());
         assertEquals(bedroom.getDescription(),result.getDescription());
@@ -42,13 +42,13 @@ public class AppTest {
     @Test
     public void test_prepareData_bedroomData_defaultAuthor(){
         // given
-        Bedroom bedroom = new Bedroom(1,"Bed", "http://","Blue",null);
+        Bedroom bedroom = new Bedroom("Bed", "http://","Blue",null);
         var SUT = new Service(bedroom); // SUT - System Under Test
 
         // when
         var result = SUT.prepareData();
         //then
-        assertEquals(bedroom.getId(),result.getId());
+      //  assertEquals(bedroom.getId(),result.getId());
         assertEquals(bedroom.getElement(),result.getElement());
         assertEquals(bedroom.getLink(),result.getLink());
         assertEquals(bedroom.getDescription(),result.getDescription());
@@ -58,7 +58,7 @@ public class AppTest {
     @Test
     public void test_prepareData_kitchenObject(){
         // given
-        Kitchen kitchen = new Kitchen(1,"Table", "http://","Blue","Kornelia", Type.DARK);
+        Kitchen kitchen = new Kitchen("Table", "http://","Blue","Kornelia", Type.DARK);
         var SUT = new Service(kitchen); // SUT - System Under Test
 
         // when
@@ -73,13 +73,13 @@ public class AppTest {
     @Test
     public void test_prepareData_kitchenData(){
         // given
-        Kitchen kitchen = new Kitchen(1,"Table", "http://","Blue","Kornelia", Type.DARK);
+        Kitchen kitchen = new Kitchen("Table", "http://","Blue","Kornelia", Type.DARK);
         var SUT = new Service(kitchen); // SUT - System Under Test
 
         // when
         var result = SUT.prepareData();
         //then
-        assertEquals(kitchen.getId(),result.getId());
+      //  assertEquals(kitchen.getId(),result.getId());
         assertEquals(kitchen.getElement(),result.getElement());
         assertEquals(kitchen.getLink(),result.getLink());
         assertEquals(kitchen.getDescription(),result.getDescription());
@@ -90,13 +90,13 @@ public class AppTest {
     @Test
     public void test_prepareData_kitchenData_defaultAuthor(){
         // given
-        Kitchen kitchen = new Kitchen(1,"Table", "http://","Blue",null, null);
+        Kitchen kitchen = new Kitchen("Table", "http://","Blue",null, null);
         var SUT = new Service(kitchen); // SUT - System Under Test
 
         // when
         var result = SUT.prepareData();
         //then
-        assertEquals(kitchen.getId(),result.getId());
+      //  assertEquals(kitchen.getId(),result.getId());
         assertEquals(kitchen.getElement(),result.getElement());
         assertEquals(kitchen.getLink(),result.getLink());
         assertEquals(kitchen.getDescription(),result.getDescription());
@@ -107,7 +107,7 @@ public class AppTest {
     @Test
     public void test_prepareData_hallObject(){
         // given
-        Hall hall = new Hall(1,"Wall", "http://","Blue","Kornelia", false);
+        Hall hall = new Hall("Wall", "http://","Blue","Kornelia", false);
         var SUT = new Service(hall); // SUT - System Under Test
 
         // when
@@ -122,13 +122,13 @@ public class AppTest {
     @Test
     public void test_prepareData_hallData(){
         // given
-        Hall hall = new Hall(1,"Wall", "http://","Blue","Kornelia", false);
+        Hall hall = new Hall("Wall", "http://","Blue","Kornelia", false);
         var SUT = new Service(hall); // SUT - System Under Test
 
         // when
         var result = SUT.prepareData();
         //then
-        assertEquals(hall.getId(),result.getId());
+     //   assertEquals(hall.getId(),result.getId());
         assertEquals(hall.getElement(),result.getElement());
         assertEquals(hall.getLink(),result.getLink());
         assertEquals(hall.getDescription(),result.getDescription());
@@ -139,13 +139,13 @@ public class AppTest {
     @Test
     public void test_prepareData_hallData_defaultAuthor(){
         // given
-        Hall hall = new Hall(1,"Wall", "http://","Blue",null, false);
+        Hall hall = new Hall("Wall", "http://","Blue",null, false);
         var SUT = new Service(hall); // SUT - System Under Test
 
         // when
         var result = SUT.prepareData();
         //then
-        assertEquals(hall.getId(),result.getId());
+    //    assertEquals(hall.getId(),result.getId());
         assertEquals(hall.getElement(),result.getElement());
         assertEquals(hall.getLink(),result.getLink());
         assertEquals(hall.getDescription(),result.getDescription());
