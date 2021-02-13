@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Optional;
 
-@WebServlet(name = "Remont", urlPatterns = {"/*"})
+@WebServlet(name = "Remont", urlPatterns = {"/api"})
 public class Servlet extends HttpServlet {
     private Logger logger = LoggerFactory.getLogger(Servlet.class);
     private static final String PROJECT_PARAM = "project";
@@ -26,6 +27,7 @@ public class Servlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         logger.info("Get request with params: " + req.getParameterMap());
        index = req.getParameter(PROJECT_PARAM);
-       resp.getWriter().write("Answer is: " + kitchenRepository.findById(Integer.parseInt(index)).orElse(defaultKitchenElement).getDescription());
+       resp.getWriter().write("Answer is: " + kitchenRepository.findById(Integer.parseInt(Optional.ofNullable(index).orElse("1"))).orElse(defaultKitchenElement).getDescription());
+
     }
 }
