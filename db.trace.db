@@ -26,3 +26,38 @@ create table kitchen(
                           type varchar(10) not null
 
 ) [42001-199]
+2021-02-12 22:45:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Niezgodna ilość kolumn
+Column count does not match; SQL statement:
+insert into KITCHEN (element, link, description, author) values ('Lamp', 'https://images.app.goo.gl/7PiwWKrmEXahzdR39','Two bulbs','Kornelia', 'SMALL') [21002-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:451)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.message.DbException.get(DbException.java:170)
+	at org.h2.command.dml.Insert.prepare(Insert.java:314)
+	at org.h2.command.Parser.prepareCommand(Parser.java:689)
+	at org.h2.engine.Session.prepareLocal(Session.java:627)
+	at org.h2.engine.Session.prepareCommand(Session.java:565)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1292)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:217)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:1113)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1436)
+	at org.h2.server.web.WebApp.query(WebApp.java:1111)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1073)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1060)
+	at org.h2.server.web.WebThread.process(WebThread.java:173)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2021-02-12 22:53:54 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLDataException: Błąd konwersji danych "'SMALL' (KITCHEN_COPY_4_0: ""TYPE"" INTEGER NOT NULL)"
+Data conversion error converting "'SMALL' (KITCHEN_COPY_4_0: ""TYPE"" INTEGER NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."KITCHEN_COPY_4_0" SELECT "ID", "ELEMENT", "LINK", "DESCRIPTION", "AUTHOR", "TYPE" FROM "PUBLIC"."KITCHEN" -- row #2 (1, 'Lamp', 'https://images.app.goo.gl/7PiwWKrmEXahzdR39', 'Two bulbs', 'Kornelia', 'SMALL') [22018-199]
+2021-02-12 22:56:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Błąd konwersji danych "'SMALL' (KITCHEN_COPY_3_0: ""TYPE"" INTEGER NOT NULL)"
+Data conversion error converting "'SMALL' (KITCHEN_COPY_3_0: ""TYPE"" INTEGER NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."KITCHEN_COPY_3_0" SELECT "ID", "ELEMENT", "LINK", "DESCRIPTION", "AUTHOR", "TYPE" FROM "PUBLIC"."KITCHEN" -- row #2 (1, 'Lamp', 'https://images.app.goo.gl/7PiwWKrmEXahzdR39', 'Two bulbs', 'Kornelia', 'SMALL') [22018-199]
+2021-02-12 22:57:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Błąd konwersji danych "'' (KITCHEN_COPY_3_1: ""TYPE"" INTEGER NOT NULL)"
+Data conversion error converting "'' (KITCHEN_COPY_3_1: ""TYPE"" INTEGER NOT NULL)"; SQL statement:
+INSERT INTO "PUBLIC"."KITCHEN_COPY_3_1" SELECT "ID", "ELEMENT", "LINK", "DESCRIPTION", "AUTHOR", "TYPE" FROM "PUBLIC"."KITCHEN" -- row #2 (1, 'Lamp', 'https://images.app.goo.gl/7PiwWKrmEXahzdR39', 'Two bulbs', 'Kornelia', '') [22018-199]

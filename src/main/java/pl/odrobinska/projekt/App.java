@@ -44,9 +44,13 @@ public class App {
             server.setHandler(webapp);
 
             BedroomRepository bedroomRepository = new BedroomRepository();
+            KitchenRepository kitchenRepository = new KitchenRepository();
+            HallRepository hallRepository = new HallRepository();
             Bedroom bedroom = new Bedroom("e","link2","descr",null);
-            Service service = new Service(bedroom);
-            logger.info("Bedroom repository 2:" + bedroomRepository.addBedroomElement((Bedroom) service.prepareData()));
+            Hall hall = new Hall("e","link","descr",null, false);
+            Kitchen kitchen = new Kitchen("e","link","descr",null, Type.DARK);
+            Service service = new Service(kitchen);
+            logger.info("Bedroom repository 2:" + kitchenRepository.addKitchenElement((Kitchen) service.prepareData()));
 
             server.addLifeCycleListener(new AbstractLifeCycle.AbstractLifeCycleListener() {
                 @Override

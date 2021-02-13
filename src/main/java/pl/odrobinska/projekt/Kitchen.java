@@ -1,9 +1,16 @@
 package pl.odrobinska.projekt;
 
+import javax.persistence.Entity;
+
+@Entity(name = "Kitchen")
 public class Kitchen extends Place{
     private Type type;
 
-    public Kitchen( String element, String link, String description, String author, Type type) {
+    public Kitchen() {
+        super();
+    }
+
+    public Kitchen(String element, String link, String description, String author, Type type) {
         super(element, link, description, author);
         this.type = type;
 

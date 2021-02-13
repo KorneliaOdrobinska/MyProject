@@ -34,6 +34,8 @@
         <!-- Names the annotated entity class -->
         <mapping class="pl.odrobinska.projekt.Place"/>
         <mapping class="pl.odrobinska.projekt.Bedroom"/>
+        <mapping class="pl.odrobinska.projekt.Kitchen"/>
+        <mapping class="pl.odrobinska.projekt.Hall"/>
 
     </session-factory>
 

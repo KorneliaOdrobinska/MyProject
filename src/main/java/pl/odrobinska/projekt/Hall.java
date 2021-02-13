@@ -1,7 +1,14 @@
 package pl.odrobinska.projekt;
 
+import javax.persistence.Entity;
+
+@Entity(name = "Hall")
 public class Hall extends Place{
     private Boolean stairs;
+
+    public Hall() {
+        super();
+    }
 
     public Boolean getStairs() {
         return stairs;
