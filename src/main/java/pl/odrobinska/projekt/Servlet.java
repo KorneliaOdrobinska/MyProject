@@ -101,12 +101,7 @@ public class Servlet extends HttpServlet {
             out.println("error");
         }
         /*
-List<Bedroom> bedroomList = bedroomRepository.findAll();
-        resp.setContentType("application/json, charset=UTF-8");
-        mapper.writeValue(resp.getOutputStream(), bedroomList);
-
-
-
+xx
          */
     }
 }
