@@ -6,12 +6,10 @@
     <title>Inspirations</title>
 </head>
 <body>
-<h1> Hello! </h1>
-</body>
-</html>
+<h1> Autor: Kornelia Odrobinska </h1>
 <main style="width: 40%; margin: 0 auto">
     <div id="welcome" style="text-align: center">
-        <h1>Introduce yourself</h1>
+        <h1>Inspirations</h1>
     </div>
     <div class="pure-menu pure-menu-horizontal">
         <a href="#" class="pure-menu-heading pure-menu-link">GŁÓWNA</a>
@@ -27,31 +25,36 @@
             </li>
         </ul>
     </div>
-    <table class="pure-table pure-table-horizontal">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>Make</th>
-            <th>Model</th>
-            <th>Year</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>1</td>
-            <td>Honda</td>
-            <td>Accord</td>
-            <td>2009</td>
-
-        </tr>
-
-        <tr>
-            <td>1</td>
-            <td>Honda</td>
-            <td>Accord</td>
-            <td>2009</td>
-
-        </tr>
-        </tbody>
-    </table>
+    <div id="content" style="font-size:70%;text-align: center">
+    </div>
+    <form id="welcomeForm" class="pure-form" style="width: 40%; margin: 0 auto">
+        <label class="pure-radio">
+            <input type="radio" name="place" value="bedroom" checked>
+            bed
+        </label>
+        <label class="pure-radio">
+            <input type="radio" name="place" value="hall">
+            hall
+        </label>
+        <button id="btn" class="pure-button pure-button-primary">Submit</button>
+    </form>
 </main>
+<script>
+  const div = document.getElementById('content');
+  const form = document.getElementById('welcomeForm');
+  document.getElementById('btn').addEventListener('click', (event) => {
+    event.preventDefault();
+    const formObj = {
+      place: form.elements.place.value
+    };
+    fetch('http://localhost:8080/api?' + new URLSearchParams(formObj))
+      .then(response => response.text())
+      .then((text) => {
+        div.innerHTML = `
+            <h1>${text}</h1>
+        `;
+      });
+  });
+</script>
+</body>
+</html>

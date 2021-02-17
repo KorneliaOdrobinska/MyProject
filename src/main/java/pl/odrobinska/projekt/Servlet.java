@@ -1,5 +1,6 @@
 package pl.odrobinska.projekt;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,6 +19,20 @@ import java.util.Optional;
 public class Servlet extends HttpServlet {
     private Logger logger = LoggerFactory.getLogger(Servlet.class);
     private static final String PROJECT_PARAM = "place";
+    private ObjectMapper mapper;
+
+    /**
+     * Servlet container needs it
+     */
+    @SuppressWarnings("unused")
+    public Servlet() {
+        this(new ObjectMapper());
+
+    }
+
+    Servlet(ObjectMapper mapper) {
+        this.mapper = mapper;
+    }
     BedroomRepository bedroomRepository = new BedroomRepository();
     Bedroom defaultBedroomElement = new Bedroom("e","link","descr",null);
     HallRepository hallRepository = new HallRepository();
@@ -36,7 +51,7 @@ public class Servlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
         resp.setContentType("text/html");
         out.println("<html><body>");
-        /*
+/*
         try
         {
             out.println("<table border=1 width=50% height=50%>");
@@ -52,7 +67,8 @@ public class Servlet extends HttpServlet {
             out.println("error");
         }
 
-         */
+
+ */
 
         try
         {
@@ -61,8 +77,9 @@ public class Servlet extends HttpServlet {
             if (place.equals("bedroom")) {
                 List<Bedroom> bedroomList = bedroomRepository.findAll();
                 for (int index = 0; index < bedroomList.size(); index++) {
-                    out.println("<tr><td>" + bedroomList.get(index).getElement() + "</td><td><a href=\"" + bedroomList.get(index).getLink() + "\" target=\"_blank\">" + Optional.ofNullable(bedroomList.get(index).getDescription()).orElse("Link") + "</a></td><td>" + bedroomList.get(index).getAuthor() + "</td></tr>");
+                   out.println("<tr><td>" + bedroomList.get(index).getElement() + "</td><td><a href=\"" + bedroomList.get(index).getLink() + "\" target=\"_blank\">" + Optional.ofNullable(bedroomList.get(index).getDescription()).orElse("Link") + "</a></td><td>" + bedroomList.get(index).getAuthor() + "</td></tr>");
                 }
+
             }
             else if (place.equals("kitchen")) {
                 List<Kitchen> kitchenList = kitchenRepository.findAll();
@@ -83,6 +100,13 @@ public class Servlet extends HttpServlet {
         {
             out.println("error");
         }
+        /*
+List<Bedroom> bedroomList = bedroomRepository.findAll();
+        resp.setContentType("application/json, charset=UTF-8");
+        mapper.writeValue(resp.getOutputStream(), bedroomList);
 
+
+
+         */
     }
 }
