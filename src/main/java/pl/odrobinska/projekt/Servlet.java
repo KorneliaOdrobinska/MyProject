@@ -72,7 +72,7 @@ public class Servlet extends HttpServlet {
 
         try
         {
-            out.println("<table class=\"pure-table pure-table-bordered\"><thead>");
+            out.println("<table style=\"width:100%\" class=\"pure-table pure-table-bordered\"><thead>");
             out.println("<tr><th>Element</th><th>Link</th><th>Author</th><tr><tbody>");
             if (place.equals("bedroom")) {
                 List<Bedroom> bedroomList = bedroomRepository.findAll();

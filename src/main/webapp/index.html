@@ -6,48 +6,84 @@
     <title>Inspirations!</title>
 </head>
 <body>
-<h1> Autor: Kornelia Odrobinska </h1>
-<main style="width: 40%; margin: 0 auto">
+<h1 style="font-size:80%"> Autor: Kornelia Odrobinska </h1>
+<main style="width: 50%; margin: 0 auto">
     <div id="welcome" style="text-align: center">
         <h1>Inspirations</h1>
     </div>
-    <div class="pure-menu pure-menu-horizontal">
-        <a href="#" class="pure-menu-heading pure-menu-link">GŁÓWNA</a>
-        <ul class="pure-menu-list">
-            <li class="pure-menu-item">
-                <a href="api?place=bedroom" class="pure-menu-link">Sypialnia</a>
-            </li>
-            <li class="pure-menu-item">
-                <a href="api?place=hall" class="pure-menu-link">Przedpokój</a>
-            </li>
-            <li class="pure-menu-item">
-                <a href="api?place=kitchen" class="pure-menu-link">Kuchnia</a>
-            </li>
-        </ul>
-    </div>
-    <div id="content" style="font-size:70%;text-align: center">
-    </div>
-    <form id="welcomeForm" class="pure-form" style="width: 40%; margin: 0 auto">
-        <label class="pure-radio">
-            <input type="radio" name="place" value="bedroom" checked>
-            bed
-        </label>
-        <label class="pure-radio">
-            <input type="radio" name="place" value="hall">
-            hall
-        </label>
-        <button id="btn" class="pure-button pure-button-primary">Submit</button>
+    <form id="welcomeForm" class="pure-form" style="width: 100%; margin: 0 auto;text-align: center">
+        <div>
+            <style scoped="">
+        .button-bedroom,
+        .button-hall,
+        .button-kitchen,
+        .button-adding {
+            color: white;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-bedroom {
+            background: rgb(28, 184, 65);
+            /* this is a green */
+        }
+
+        .button-kitchen {
+            background: rgb(202, 60, 60);
+            /* this is a maroon */
+        }
+
+        .button-hall {
+            background: rgb(223, 117, 20);
+            /* this is an orange */
+        }
+
+        .button-adding {
+            background: rgb(66, 184, 221);
+            /* this is a light blue */
+        }
+    </style>
+            <button id="btn_b" name="place" value="bedroom" class="button-bedroom pure-button">Bedroom</button>
+            <button id="btn_h" name="place" value="hall" class="button-hall pure-button">Hall</button>
+            <button id="btn_k" name="place" value="kitchen" class="button-kitchen pure-button">Kitchen</button>
+            <button class="button-adding pure-button">Add new element</button>
+        </div>
     </form>
+    <div id="content" style="font-size:50%;text-align: center;font-family:times">
+    </div>
 </main>
+
 <script>
   const div = document.getElementById('content');
   const form = document.getElementById('welcomeForm');
-  document.getElementById('btn').addEventListener('click', (event) => {
+  document.getElementById('btn_b').addEventListener('click', (event) => {
     event.preventDefault();
-    const formObj = {
-      place: form.elements.place.value
-    };
-    fetch('http://localhost:8080/api?' + new URLSearchParams(formObj))
+
+    fetch('http://localhost:8080/api?' + new URLSearchParams("place=bedroom"))
+      .then(response => response.text())
+      .then((text) => {
+        div.innerHTML = `
+            <h1>${text}</h1>
+        `;
+      });
+  });
+
+    document.getElementById('btn_h').addEventListener('click', (event) => {
+    event.preventDefault();
+
+    fetch('http://localhost:8080/api?' + new URLSearchParams("place=hall"))
+      .then(response => response.text())
+      .then((text) => {
+        div.innerHTML = `
+            <h1>${text}</h1>
+        `;
+      });
+  });
+
+    document.getElementById('btn_k').addEventListener('click', (event) => {
+    event.preventDefault();
+
+    fetch('http://localhost:8080/api?' + new URLSearchParams("place=kitchen"))
       .then(response => response.text())
       .then((text) => {
         div.innerHTML = `
@@ -56,5 +92,6 @@
       });
   });
 </script>
+
 </body>
 </html>
