@@ -16,7 +16,10 @@ public class Service<T extends Place> {
         if(place instanceof Kitchen){
             ((Kitchen) place).setType(Optional.ofNullable(((Kitchen) place).getType()).orElse(Type.SMALL));
         }
-        place.setAuthor(Optional.ofNullable(place.getAuthor()).orElse("Anonymous"));
+ //       place.setAuthor(Optional.ofNullable(place.getAuthor()).orElse("Anonymous"));
+        if (Optional.ofNullable(place.getAuthor()).orElse("").equals("")){
+            place.setAuthor("Anonymous");
+        }
         return place;
     }
     /*

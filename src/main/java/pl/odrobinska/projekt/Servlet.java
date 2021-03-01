@@ -104,4 +104,18 @@ public class Servlet extends HttpServlet {
 xx
          */
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        logger.info("Got  POST request with parameters" + req.getParameterMap());
+        String author = req.getParameter("author");
+        String element = req.getParameter("element");
+        String link = req.getParameter("link");
+        String description = req.getParameter("description");
+        Bedroom bedroomElement = new Bedroom(element, link, description,author);
+        Service service = new Service(bedroomElement);
+        resp.setContentType("application/json, charset=UTF-8");
+        mapper.writeValue(resp.getOutputStream(), bedroomRepository.addBedroomElement((Bedroom) service.prepareData()));
+
+    }
 }

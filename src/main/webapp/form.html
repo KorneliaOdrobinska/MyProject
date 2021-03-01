@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.5/build/pure-min.css" integrity="sha384-LTIDeidl25h2dPxrB2Ekgc9c7sEC3CWGM6HeFmuDNUjX76Ert4Z4IY714dhZHPLd" crossorigin="anonymous">
+    <title>Bazinga!</title>
+</head>
+<body>
+<h1 style="font-size:80%"> Autor: Kornelia Odrobinska </h1>
+<main style="width: 50%; margin: 0 auto">
+    <div id="welcome" style="text-align: center">
+        <h1>Add new element</h1>
+    </div>
+    <form id="welcomeForm" class="pure-form" style="width: 100%; margin: 0 auto;text-align: center">
+        <fieldset>
+            <div class="pure-g">
+                <div class="pure-u-1 pure-u-md-1-3">
+                    <label for="author">Author</label>
+                    <input type="text" id="author" class="pure-u-23-24" />
+                </div>
+                <div class="pure-u-1 pure-u-md-1-3">
+                    <label for="element">Element</label>
+                    <input type="text" id="element" class="pure-u-23-24" />
+                </div>
+                <div class="pure-u-1 pure-u-md-1-3">
+                    <label for="link">Link</label>
+                    <input type="url" id="link" class="pure-u-23-24" required="" />
+                </div>
+                <div class="pure-u-1 pure-u-md-1-3">
+                    <label for="description">Description</label>
+                    <input type="text" id="description" class="pure-u-23-24" />
+                </div>
+                <div class="pure-u-1 pure-u-md-1-3">
+                    <label for="multi-state">State</label>
+                    <select id="multi-state" class="pure-input-1-2">
+                        <option>AL</option>
+                        <option>CA</option>
+                        <option>IL</option>
+                    </select>
+                </div>
+            </div>
+        <div>
+            <style scoped="">
+        .button-back,
+        .button-submit {
+            color: white;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-back {
+            background: rgb(202, 60, 60);
+            /* this is a maroon */
+        }
+
+        .button-submit {
+            background: rgb(66, 184, 221);
+            /* this is a light blue */
+        }
+    </style>
+            <a class="button-back pure-button" href="index.html">Back</a>
+            <button id="btn-submit" class="button-submit pure-button">Submit</button>
+
+        </div>
+        </fieldset>
+    </form>
+    <div id="content" style="font-size:50%;text-align: center;font-family:times">
+    </div>
+</main>
+<script>
+  const API_URL = "http://localhost:8080/";
+  const div = document.getElementById('content');
+  const form = document.getElementById('welcomeForm');
+
+
+   document.getElementById('btn-submit').addEventListener('click', (event) => {
+    event.preventDefault();
+                    const formObj = {
+                    author: welcomeForm.elements.author.value,
+                    element: welcomeForm.elements.element.value,
+                    link: welcomeForm.elements.link.value,
+                    description: welcomeForm.elements.description.value,
+                };
+                fetch(`${API_URL}api?` + new URLSearchParams(formObj), {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ text: formObj})
+            })
+             window.location = `${API_URL}index.html`;
+  });
+</script>
+</body>
+</html>
